@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HGSE Survival</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ===== Character setup ===== -->
+  <section id="setup-screen" class="screen">
+    <h1>HGSE Survival</h1>
+    <p class="tagline">How many days can your student survive at the Harvard Graduate School of Education?</p>
+    <form id="setup-form">
+      <label>Name <input id="name" maxlength="20" required autocomplete="off" /></label>
+
+      <h2>Concentration <small>(your difficulty setting)</small></h2>
+      <div id="concentrations" class="cards"></div>
+
+      <h2>Housing</h2>
+      <div id="housing" class="cards"></div>
+
+      <h2>Dream job</h2>
+      <div id="dream-jobs" class="cards"></div>
+
+      <h2>Courses <small id="course-count"></small></h2>
+      <div id="courses" class="cards compact"></div>
+
+      <p id="rules" class="muted"></p>
+      <button type="submit">Join waiting room</button>
+      <p class="error" id="setup-error"></p>
+    </form>
+  </section>
+
+  <!-- ===== Waiting room ===== -->
+  <section id="lobby-screen" class="screen" hidden>
+    <h1>Waiting room <span id="lobby-count"></span></h1>
+    <ul id="lobby-players"></ul>
+    <p class="muted">The semester starts automatically when 8 students are here, or anyone can start it now.</p>
+    <button id="start-button">Start the semester</button>
+    <p class="error" id="lobby-error"></p>
+  </section>
+
+  <!-- ===== Game ===== -->
+  <section id="game-screen" class="screen" hidden>
+    <div id="game-layout">
+      <div id="canvas-wrap">
+        <canvas id="map"></canvas>
+        <div id="clock"></div>
+        <div id="hint">WASD / arrow keys to walk. Walk into a building, then press 1–9 to act.</div>
+      </div>
+      <aside id="hud">
+        <div class="stat-row"><span>Energy</span><div class="bar"><div id="energy-bar"></div></div><span id="energy-val"></span></div>
+        <div id="stats"></div>
+        <div id="flags"></div>
+        <h3 id="location"></h3>
+        <div id="busy"></div>
+        <ol id="activities"></ol>
+        <form id="improvise-form">
+          <input id="improvise" maxlength="200" placeholder="Improvise something here (AI judges it)…" autocomplete="off" />
+        </form>
+        <details>
+          <summary>Courses &amp; grades</summary>
+          <table id="courses-table"></table>
+        </details>
+      </aside>
+    </div>
+    <div id="log" aria-live="polite"></div>
+  </section>
+
+  <!-- ===== Overlays ===== -->
+  <div id="overlay" hidden>
+    <div id="overlay-card"></div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>

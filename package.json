@@ -1,0 +1,24 @@
+{
+  "name": "hgse-survival",
+  "version": "0.1.0",
+  "description": "Multiplayer 2D survival sim: how many days can your student survive at HGSE? AI narrates the chaos.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test --test-force-exit"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "socket.io": "^4.8.0"
+  },
+  "devDependencies": {
+    "socket.io-client": "^4.8.0"
+  },
+  "license": "MIT"
+}
